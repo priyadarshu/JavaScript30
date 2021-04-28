@@ -47,8 +47,48 @@ const myHTML = `<div class="mydivs">
 const ulElement = myDiv.querySelector("ul");
 
 ulElement.insertAdjacentHTML("beforebegin", myHTML);
-p.classList.add("warning");
+
 
 //const newDiv = myDiv.firstElementChild('div');
 
 const newDiv = myDiv.querySelector(".mydivs");
+console.log(newDiv);
+console.log(newDiv.children);
+newDiv.children[1].classList.add('warning');
+newDiv.firstElementChild.remove();
+
+
+function generatePlayerCard(name, age, height){
+    const playersdetails=`<div class="playerCard"><h2>${name} - ${age} </h2><p>They are ${height} and ${age} years old. In Dog years this person would be ${age *7}. That would be a tall dog!</p>
+    
+    <button type="button" class="delete"> &times; Delete</button></div>`;
+ return playersdetails;
+}
+
+const cards= document.createElement("div");
+cards.classList.add("cards");
+
+let cardsHTML = generatePlayerCard('priya', 12, 150);
+cardsHTML= cardsHTML + generatePlayerCard('wes', 23, 110);
+cardsHTML+= generatePlayerCard('swiss', 33, 165);
+cardsHTML+= generatePlayerCard('leo', 43, 125);
+
+//console.log(cardsHTML);
+cards.innerHTML=cardsHTML;
+myDiv.insertAdjacentElement('beforebegin',cards);
+
+//select all the buttons
+
+const buttons= document.querySelectorAll('.delete');
+console.log(buttons);
+//delete cards
+function deleteCard(event){
+    const buttonGotClicked = event.currentTarget;
+    console.log(buttonGotClicked);
+    //buttonGotClicked.parentElement.remove();
+    buttonGotClicked.closest(".playerCard").remove();
+    console.log('Delete Card');
+}
+//loop and delete the card based on delete click event
+
+buttons.forEach(button => button.addEventListener('click',deleteCard));
