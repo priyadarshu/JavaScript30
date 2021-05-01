@@ -1,0 +1,26 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    background: white;
+}
+
+button{
+    margin: 10px;
+    padding: 5px;
+    border: 3px solid grey;
+    background: rgb(48, 47, 47);
+    font-family: serif;
+    font-size: medium;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(207, 200, 200);
+
+}
+button:hover{
+    border :2px solid black;
+    background: grey;
+    color:#000;
+    
+}
+
